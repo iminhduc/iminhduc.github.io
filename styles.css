@@ -1,0 +1,1200 @@
+@CHARSET "ISO-8859-1";
+/* Reset CSS
+ * --------------------------------------- */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td {
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration:none;
+}
+table {
+    border-spacing: 0;
+}
+fieldset,img {
+    border: 0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-weight: normal;
+    font-style: normal;
+}
+strong{
+    font-weight: bold;
+}
+ol,ul {
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+caption,th {
+    text-align: left;
+
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+    font-size: 100%;
+    margin:0;
+    padding:0;
+    color:#444;
+}
+q:before,q:after {
+    content:'';
+}
+abbr,acronym { border: 0;
+}
+*{
+    -webkit-box-sizing: border-box; /* Safari<=5 Android<=3 */
+    -moz-box-sizing: border-box; /* <=28 */
+    box-sizing: border-box;
+}
+
+/* Buttons
+ * --------------------------------------- */
+.button{
+    margin: 10px 0;
+    font-size: 1.2em;
+    border: 1px solid #17A8E3;
+    border-left: 0;
+    border-radius: 4px;
+    display: inline-block;
+    height: 50px;
+    width: 50%;
+    vertical-align: top;
+    background: #17A8E3;
+    padding: 11px 15px 12px;
+    color: #fff;
+    line-height: 100%;
+    cursor: pointer;
+}
+
+/* Game
+ * --------------------------------------- */
+html{
+    display: table;
+}
+body,html{
+    font-family: arial;
+    color: #333;
+    font-size: 16px;
+    font-family: "Raleway", Helvetica, Arial, "Lucida Grande", sans-serif !important;
+    height: 100%;
+    width: 100%;
+}
+body{
+    display: table-cell;
+    background: url(imgs/background.png);
+    background-position: bottom left;
+    background-size: cover;
+    vertical-align: middle;
+    text-align: center;
+}
+#game {
+    font-size: 19px;
+    width: 900px;
+    margin: 0 auto;
+    padding:0;
+    height: 650px;
+    display:block;
+    position: relative;
+    overflow: hidden;
+    background: #65c3d3; /* Old browsers */
+    background: -moz-linear-gradient(45deg, #65c3d3 0%, #0c5c8e 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, #65c3d3 0%,#0c5c8e 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, #65c3d3 0%,#0c5c8e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#65c3d3', endColorstr='#0c5c8e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    overflow: hidden;
+    border-radius: 15px;
+}
+#level{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    margin-top: -20px;
+    font-size: 40px;
+    font-weight: bold;
+    z-index: 9;
+    color: #fff;
+    text-shadow: 1px 1px 1px black;
+}
+.footer{
+    text-align: center;
+    color: #808080;
+    font-size: 0.9em;
+    padding: 7px;
+}
+.footer a{
+    color: #ff3bee;
+    display: inline-block;
+}
+.footer a:hover{
+    border-bottom: 1px solid #ff3bee;
+}
+
+
+/* Game options
+ * --------------------------------------- */
+.game-options{
+    margin-left: 10px;
+    display: inline-block;
+    padding: 2px 0 0 3px;
+    vertical-align: top;
+    font-size: 1.1em;
+    position: absolute;
+    left: 110px;
+    top: 13px;
+    z-index: 99999999999;
+    transition: all 300ms ease-in-out;
+    color: #63472f;
+    user-select: none;
+
+}
+#game.active .game-options i:hover{
+    color: black;
+}
+.game-options i{
+    cursor: pointer;
+    display: inline-block;
+}
+#game:not(.active) i.icon-stop,
+#game:not(.active) .icon-stop-wrapper{
+    display: none;
+}
+#game:not(.active) .game-options{
+    margin-top: 9px;
+    color: #fff;
+    transform: translate3d(-105px, -8px, 0);
+}
+#game.active .game-options .icon{
+    background: transparent;
+    width: auto;
+    height: auto;
+    background: transparent;
+    margin: 0 6px 0 0;
+    padding: 0;
+    border-radius: 0;
+    vertical-align: top;
+}
+
+/* Words
+ * --------------------------------------- */
+.word {
+    position: absolute;
+    top: -24px;
+    color: #f2f2f2;
+    z-index: 999;
+}
+.word.active {
+    transform: translateY(651px);
+    -ms-transform: translateY(651px);
+    -webkit-transform: -webkit-translateY(651px);
+}
+.word span{
+    margin: 0 1px 0 0;
+    border-bottom: 1px solid transparent;
+}
+.word span.active {
+    color: #34495e;
+    border-bottom: 1px solid #34495e;
+}
+
+/* Cities
+ * --------------------------------------- */
+.city{
+    background: red;
+    position: absolute;
+    bottom: 0;
+    height: 10px;
+    width: 200px;
+    transform: translate3d(0, 240px, 0);
+    transition: transform 300ms ease-in;
+}
+#game.active .city{
+    transform: translate3d(0, 0, 0);
+}
+.city:before{
+    content: '';
+    display: block;
+    background-image: url(imgs/city3.png);
+    height: 173px;
+    width: 210px;
+    position: absolute;
+    bottom: 100%;
+    left: -5px;
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    z-index: 99;
+}
+.city:after{
+    content: '';
+    display: block;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    background: red;
+}
+.state2.city:after{
+    background: yellow;
+}
+.state3.city:after{
+    background: orange;
+}
+.state4.city:after{
+    background: black;
+}
+.city.state2:before{
+    background-image: url(imgs/city-state2.png);
+}
+.city.state3:before{
+    background-image: url(imgs/city-state3.png);
+}
+.city.state4:before{
+    background-image: url(imgs/city-state4.png);
+}
+#city1{
+    left: 70px;
+}
+#city2{
+    left: 350px;
+     transition-delay: 100ms;
+}
+#city3{
+    left: 630px;
+    transition-delay: 200ms;
+}
+
+/* Missiles
+ * --------------------------------------- */
+.missile{
+    bottom: -122px;
+    position: absolute;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    transition: transform 700ms ease;
+    -webkit-transition: -webkit-transform 700ms ease;
+    background-image: url(imgs/missile3.png);
+    height: 115px;
+    width: 15px;
+    will-change: transform;
+    transform: translateZ(0);
+
+}
+.missile.active{
+    transform: translateY(-600px);
+    -ms-transform: translateY(-600px);
+    -webkit-transform: -webkit-translateY(-600px);
+}
+
+
+/* Fullscreen & centered
+ * --------------------------------------- */
+.game-fullscreen{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999999999;
+    display: table;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+.game-centered{
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+}
+
+/* Start screen
+ * --------------------------------------- */
+.startScreen{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ea33ff+0,f7f41a+86,f7f41a+86 */
+    background: #ea33ff; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #ea33ff 0%, #f7f41a 86%, #f7f41a 86%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #ea33ff 0%,#f7f41a 86%,#f7f41a 86%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #ea33ff 0%,#f7f41a 86%,#f7f41a 86%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea33ff', endColorstr='#f7f41a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.startScreen a:hover{
+    text-decoration: underline;
+}
+.startScreen-by,
+.startScreen-howWasMade{
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    color: #ea33ff;
+    font-size: 0.85em;
+}
+.startScreen-howWasMade{
+    left: 20px;
+    right: auto;
+    bottom: 10px;
+    text-align: left;
+    color: rgba(0,0,0,0.7);
+}
+.startScreen-github{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 1.5em;
+    text-shadow: 1px 3px 5px rgba(0,0,0,0.2)
+}
+a.startScreen-github:hover{
+    color: black;
+    text-decoration: none;
+}
+.startScreen-playButton{
+    background: #f73838;
+    color: white;
+    position: absolute;
+    bottom: 157px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    border: 2px solid #fff;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.4);
+    transform: rotate(5deg);
+    outline: 0;
+}
+.startScreen-playButton:hover{
+    background: #e043a7;
+    animation-name: shake-hard;
+    animation-duration: 100ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+.startScreen-title{
+    color: #fff;
+}
+.startScreen-centered{
+    background-image: url(./imgs/hero-words.png);
+    background-size: cover;
+    background-repeat: repeat;
+}
+.startScreen-title{
+    background-image: url(./imgs/falling-words-title.png);
+    width: 750px;
+    height: 148px;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 171px;
+    animation-name: titleAnimation;
+    animation-duration: 20000ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+
+}
+/* Game about
+ * --------------------------------------- */
+.game-about{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#855dff+0,ef1197+100 */
+    background: #855dff; /* Old browsers */
+    background: -moz-linear-gradient(45deg, #855dff 0%, #ef1197 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, #855dff 0%,#ef1197 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, #855dff 0%,#ef1197 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#855dff', endColorstr='#ef1197',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    text-align: center;
+    padding: 70px;
+    font-family: arial;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 500ms ease-in-out;
+    color: white;
+}
+.game-about.active{
+    visibility: visible;
+    opacity: 1;
+}
+.game-about-back{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+.game-about a{
+    color: #fbff00;
+    text-decoration: none;
+}
+.game-about a:hover{
+    text-decoration: underline;
+}
+.game-about h1{
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: bold;
+}
+.game-about h2{
+    font-size: 1.2em;
+    color: white;
+    font-weight: bold;
+}
+.game-about h3{
+    margin: 7px 0 60px 0;
+    color: white;
+}
+.game-about p,
+.game-about ul{
+    padding: 0 20%;
+    font-size: 0.9em;
+}
+.game-about-instructions{
+    border: 1px solid rgba(255,255,255,0.3);
+    margin: 0 10% 20px 10%;
+    border-radius: 10px;
+    padding: 6px;
+    background: rgba(255,255,255,0.1);
+}
+.game-about ul{
+    margin-top: 40px;
+}
+.game-about li{
+    margin-bottom: 15px;
+    list-style-type: disc;
+    text-align: left;
+}
+
+
+/* Game Over
+ * --------------------------------------- */
+.gameOver{
+    display: none;
+    z-index: 777;
+    background-image: linear-gradient( 135deg, #F05F57 10%, #360940 100%);
+    position: relative;
+    color: #f2f2f2;
+}
+.gameOver-title{
+    color: #f2f2f2;
+    font-weight:bold;
+    font-size: 4em;
+}
+.gameOver.active{
+    display:table !important;
+}
+.gameOver-centered{
+    font-family: arial, helvetica;
+}
+.gameOVer-info{
+    font-size: 1.7em;
+    margin: 40px 0;
+}
+.gameOver-score{
+    font-size: 2.2em;
+    font-weight: bold;
+}
+.gameOver-addToRanking{
+    font-size: 1.2em;
+}
+.gameOver-viewRanking{
+    font-size: 0.7em;
+    cursor: pointer;
+}
+.gameOver-logout:hover,
+.gameOver-viewRanking:hover{
+    text-decoration: underline;
+}
+.gameOver-logout{
+    font-size: 0.7em;
+    color: yellow;
+    padding: 0 8px;
+    cursor: pointer;
+}
+.gameOver-textInput{
+    margin: 10px 0 0 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 15px;
+    display: inline-block;
+    height: 50px;
+    width: 50%;
+    font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    background: #fff;
+    color: #aaa;
+    box-shadow: inset 0 1px 0 rgba(0,0,0,0.02);
+    text-rendering: optimizeLegibility;
+}
+.gameOver-addToRanking-loading{
+    display: none;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    border: 0.2rem solid rgba(0,0,0,0.2);
+    border-top-color: #000;
+    -webkit-animation: spin 1s infinite linear;
+    animation: spin 1s infinite linear;
+    margin: 0px 10px 0 0;
+    vertical-align: middle;
+}
+.gameOver-addToRanking-addingScore,
+.gameOver-addToRanking-loading{
+    display: none;
+}
+.gameOver-addToRanking-button.active .gameOver-addToRanking-loading,
+.gameOver-addToRanking-button.active .gameOver-addToRanking-addingScore{
+    display: inline-block;
+}
+.gameOver-addToRanking-button.active .gameOver-addToRanking-addScore{
+    display: none;
+}
+.gameOver-notice{
+    font-size: 12px;
+    background: rgba(0,0,0,0.6);
+    padding: 5px 15px;
+    color: #fff;
+    font-size: 13px;
+    display: block;
+    width: 450px;
+    margin: 0 auto;
+}
+.input-error{
+    background: #e84040;
+    color: white;
+    border-color: #8c0f0f;
+}
+.input-ok{
+    background: #97f5b8;
+    color: #888;
+}
+.gameOver-invalidName{
+    display: none;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+/* Ranking
+ * --------------------------------------- */
+.ranking{
+    display: none;
+    z-index: 777;
+    background: linear-gradient( 135deg, #F05F57 10%, #360940 100%);
+    color: #f2f2f2;
+    z-index: 666;
+    opacity: 1;
+}
+.ranking-title{
+    color: #f2f2f2;
+    font-weight:bold;
+    font-size: 4em;
+    margin: 0.5em 0 0.34em 0;
+}
+.ranking-centered{
+    text-align:center;
+    opacity: 0;
+    transition: all 1200ms ease-in-out;
+    -webit-transition: all 1200ms ease-in-out;
+}
+.ranking-centered.active{
+    opacity: 1;
+}
+.ranking-info{
+    font-size: 1.7em;
+    margin: 0px 0 1px 0;
+}
+.ranking-position{
+    font-size: 2.2em;
+    font-weight: bold;
+}
+.ranking-playButton{
+    position: absolute;
+    bottom: 27px;
+    background: #efff00;
+    color: black;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+/* Ranking table
+ * --------------------------------------- */
+#ranking-table{
+    width: 100% !important;
+    padding: 0 35px;
+}
+#ranking-table_filter{
+    float: none;
+    margin: 0 auto;
+    text-align: center;
+    margin: 20px 0;
+}
+#ranking-table_filter label{
+    background: rgba(0, 0, 0, 0.22);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: rgba(255,255,255,0.7);
+}
+table.dataTable tbody tr {
+    background-color: transparent;
+    text-align: left;
+}
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 4px 10px;
+    font-size: 16px;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button,
+.dataTables_wrapper .dataTables_info,
+.paginate_button{
+    color: #fff !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover{
+    color: rgba(255,255,255,0.3) !important;
+}
+table.dataTable thead th, 
+table.dataTable thead td{
+    border-bottom: 1px solid #fff
+}
+table.dataTable.no-footer{
+    border-bottom: none;
+}
+table.dataTable td:nth-child(2) {
+    text-align: right;
+}
+span .paginate_button {
+    display: none !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: none;
+    border:none;
+    text-decoration: underline;
+}
+
+/* Game Info
+ * --------------------------------------- */
+.game-info{
+    text-align: left;
+    position: absolute;
+    transform: translate3d(0, -50px, 0);
+    left: 0;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    padding: 0 10px;
+    background: #F2F2F2;
+    background: url(./imgs/game-header.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #63472f;
+    font-weight: bold;
+    font-size: 24px;
+    height: 50px;
+    line-height: 50px;
+    transition: transform 500ms ease-out;
+    z-index: 9999;
+    box-shadow: 1px 0px 9px rgba(0,0,0,0.4);
+}
+#game.active .game-info{
+    transform: translate3d(0, 0, 0);
+}
+.game-info-score{
+    position: absolute;
+    right: 0;
+    margin: 0 20px 0 0;
+}
+.game-info-score-star{
+    color: yellow;
+    display: inline-block;
+}
+.game-info-score-star.active{
+  animation: bounceAnimation 0.5s;
+  animation-direction: alternate;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+}
+
+/* Explosions
+ * --------------------------------------- */
+.explosion{
+    position: absolute;
+    bottom: -200px;
+    height: 106px;
+    width: 106px;
+    display: block;
+    z-index: 999;
+    display: none;
+    background-position: 0 0;
+    background-image: url('imgs/explosion-anim22.png');
+    background-repeat: no-repeat;
+}
+.explosion.active{
+    display: block;
+    animation: explosionX 200ms steps(3) 3,
+               explosionY 600ms steps(3) 1 forwards; 
+}
+@keyframes explosionX {
+   from{ background-position-x: 0; }
+   to{ background-position-x: -320px; }
+}
+@keyframes explosionY {
+   from{ background-color: 0;- }
+   to{ background-position-y: -320px; }
+}
+
+
+.city-explosion{
+    position: absolute;
+    bottom: -500px;
+    height: 388px;
+    width: 300px;
+    z-index: 999;
+    display: none;
+    background-image: url('imgs/anim3.png');
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+.city-explosion.active{
+    display: block;
+    bottom: -20px;
+    animation: play_1 300ms steps(5) 5,
+               play_2 1200ms steps(4) 1 forwards;
+}
+@keyframes play_1 {
+   from{ background-position-x: 0; }
+   to{ background-position-x: -1500px; }
+}
+@keyframes play_2 {
+   from{ background-color: 0;- }
+   to{ background-position-y: -1552px; }
+}
+
+
+/*
+.city-explosion{
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    display: block;
+    z-index: 999;
+    display: block;
+    background-image: url('imgs/2pepe.png');
+    background-position: 0 0;
+}
+.city-explosion.active{
+    bottom: -65px;
+    animation: play_1 300ms steps(5) infinite,
+               play_2 1800ms steps(6) infinite;
+}
+@keyframes play_1 {
+   from{ background-position-x: 0; }
+   to{ background-position-x: -2000px; }
+}   
+@keyframes play_2 {
+   from{ background-color: 0;- }
+   to{ background-position-y: -2400px; }
+}
+*/
+
+
+/* Fire
+ * --------------------------------------- */
+.fire{
+    display: block;
+    position: absolute;
+    width: 275px;
+    height: 157px;
+    background-image: url(imgs/fire3.png);
+    bottom: -35px;
+    left: -39px;
+    display: none;
+    animation: fireX 300ms steps(4) infinite,
+               fireY 1800ms steps(6) infinite;
+}
+
+@keyframes fireX {
+   from{ background-position-x: 0; }
+   to{ background-position-x: -1100px; }
+}
+@keyframes fireY {
+   from{ background-color: 0;- }
+   to{ background-position-y: -943px; }
+}
+
+.city.state3 .fire,
+.city.state4 .fire{
+    display: block;
+}
+
+
+/* Clouds
+ * --------------------------------------- */
+.cloud{
+    position: absolute;
+    -webkit-animation:linear infinite alternate;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    will-change: transform;
+    transform: translateZ(0);
+}
+#cloud1{
+    top: 70px;
+    width: 200px;
+    height: 74px;
+    left: 5%;
+    background-image: url(imgs/cloud-static.gif);
+    -webkit-animation-name: moveCloud1;
+    -webkit-animation-duration: 30s;
+}
+#cloud2{
+    top: 390px;
+    width: 220px;
+    height: 80px;
+    left: 30%;
+    background-image: url(imgs/cloud-static2.gif);
+    -webkit-animation-name: moveCloud2;
+    -webkit-animation-duration: 10s;
+
+}
+#cloud3{
+    top: 250px;
+    width: 160px;
+    height: 56px;
+    left: 50%;
+    background-image: url(imgs/cloud-static3.gif);
+    -webkit-animation-name: moveCloud3;
+    -webkit-animation-duration: 20s;
+}
+@keyframes moveCloud1 {
+    0% { transform: translate3d(5%, 0, 0);}
+    50%{ transform: translate3d(30%, 10px, 0);}
+    100%{ transform: translate3d(5%, 0, 0);}
+}
+@keyframes moveCloud2 {
+    0% { transform: translate3d(30%, 0, 0);}
+    50%{ transform: translate3d(10%, -20px, 0);}
+    100%{transform: translate3d(30%, 0, 0);}
+}
+@keyframes moveCloud3 {
+    0% { transform: translate3d(70%, 0, 0);}
+    50%{ transform: translate3d(20%, 20px, 0);}
+    100%{ transform: translate3d(80%, 0, 0);}
+}
+
+
+/*! * * * * * * * * * * * * * * * * * * * *\
+  CSShake :: shake-hard
+  v1.5.0
+  CSS classes to move your DOM
+  (c) 2015 @elrumordelaluz
+  http://elrumordelaluz.github.io/csshake/
+  Licensed under MIT
+\* * * * * * * * * * * * * * * * * * * * */
+.shake-hard {
+  display: inline-block;
+  transform-origin: center center; }
+
+.shake-freeze,
+.shake-constant.shake-constant--hover:hover,
+.shake-trigger:hover .shake-constant.shake-constant--hover {
+  animation-play-state: paused; }
+
+.shake-freeze:hover,
+.shake-trigger:hover .shake-freeze, .shake-hard:hover,
+.shake-trigger:hover .shake-hard {
+  animation-play-state: running; }
+
+@keyframes shake-hard {
+  2% {
+    transform: translate(3px, -1px) rotate(-0.5deg); }
+  4% {
+    transform: translate(0px, -8px) rotate(-0.5deg); }
+  6% {
+    transform: translate(6px, 10px) rotate(-0.5deg); }
+  8% {
+    transform: translate(10px, -4px) rotate(1.5deg); }
+  10% {
+    transform: translate(-6px, 9px) rotate(-0.5deg); }
+  12% {
+    transform: translate(5px, 2px) rotate(-1.5deg); }
+  14% {
+    transform: translate(-2px, 6px) rotate(0.5deg); }
+  16% {
+    transform: translate(-1px, -2px) rotate(-2.5deg); }
+  18% {
+    transform: translate(4px, 9px) rotate(3.5deg); }
+  20% {
+    transform: translate(6px, 7px) rotate(-0.5deg); }
+  22% {
+    transform: translate(9px, -4px) rotate(-0.5deg); }
+  24% {
+    transform: translate(10px, 8px) rotate(-1.5deg); }
+  26% {
+    transform: translate(-2px, 0px) rotate(2.5deg); }
+  28% {
+    transform: translate(7px, -7px) rotate(2.5deg); }
+  30% {
+    transform: translate(1px, 0px) rotate(-1.5deg); }
+  32% {
+    transform: translate(-6px, -2px) rotate(2.5deg); }
+  34% {
+    transform: translate(1px, -4px) rotate(-0.5deg); }
+  36% {
+    transform: translate(1px, 7px) rotate(0.5deg); }
+  38% {
+    transform: translate(6px, -9px) rotate(0.5deg); }
+  40% {
+    transform: translate(-5px, -3px) rotate(-1.5deg); }
+  42% {
+    transform: translate(0px, -6px) rotate(-2.5deg); }
+  44% {
+    transform: translate(7px, 10px) rotate(1.5deg); }
+  46% {
+    transform: translate(6px, -4px) rotate(2.5deg); }
+  48% {
+    transform: translate(-4px, -6px) rotate(-0.5deg); }
+  50% {
+    transform: translate(3px, -4px) rotate(0.5deg); }
+  52% {
+    transform: translate(7px, 2px) rotate(2.5deg); }
+  54% {
+    transform: translate(7px, 4px) rotate(-2.5deg); }
+  56% {
+    transform: translate(9px, 1px) rotate(-2.5deg); }
+  58% {
+    transform: translate(-3px, -7px) rotate(2.5deg); }
+  60% {
+    transform: translate(6px, 3px) rotate(0.5deg); }
+  62% {
+    transform: translate(1px, 4px) rotate(-0.5deg); }
+  64% {
+    transform: translate(10px, 4px) rotate(-0.5deg); }
+  66% {
+    transform: translate(8px, -7px) rotate(2.5deg); }
+  68% {
+    transform: translate(-3px, -6px) rotate(0.5deg); }
+  70% {
+    transform: translate(-7px, -4px) rotate(1.5deg); }
+  72% {
+    transform: translate(10px, 6px) rotate(1.5deg); }
+  74% {
+    transform: translate(3px, 9px) rotate(1.5deg); }
+  76% {
+    transform: translate(-6px, 5px) rotate(-2.5deg); }
+  78% {
+    transform: translate(4px, 5px) rotate(0.5deg); }
+  80% {
+    transform: translate(-8px, 3px) rotate(3.5deg); }
+  82% {
+    transform: translate(3px, -2px) rotate(2.5deg); }
+  84% {
+    transform: translate(7px, 10px) rotate(-0.5deg); }
+  86% {
+    transform: translate(5px, -6px) rotate(-0.5deg); }
+  88% {
+    transform: translate(-8px, -5px) rotate(0.5deg); }
+  90% {
+    transform: translate(3px, -9px) rotate(-0.5deg); }
+  92% {
+    transform: translate(8px, 8px) rotate(-0.5deg); }
+  94% {
+    transform: translate(-6px, -7px) rotate(2.5deg); }
+  96% {
+    transform: translate(-6px, 5px) rotate(0.5deg); }
+  98% {
+    transform: translate(5px, -7px) rotate(0.5deg); }
+  0%, 100% {
+    transform: translate(0, 0) rotate(0); } }
+
+.shake-hard:hover,
+.shake-trigger:hover .shake-hard, .shake-hard.shake-freeze, .shake-hard.shake-constant {
+  animation-name: shake-hard;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Fonts
+ * --------------------------------------- */
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?ngu9c4');
+  src:  url('fonts/icomoon.eot?ngu9c4#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ngu9c4') format('truetype'),
+    url('fonts/icomoon.woff?ngu9c4') format('woff'),
+    url('fonts/icomoon.svg?ngu9c4#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-star-full:before {
+  content: "\e9d9";
+}
+.icon-happy:before {
+  content: "\e9df";
+}
+.icon-sad:before {
+  content: "\e9e5";
+}
+.icon-info:before {
+  content: "\ea0c";
+}
+.icon-stop:before {
+  content: "\ea17";
+}
+.icon-volume-high:before {
+  content: "\ea26";
+}
+.icon-volume-mute2:before {
+  content: "\ea2a";
+}
+.icon-github:before {
+  content: "\eab0";
+}
+
+
+
+/* to do 
+https://jsfiddle.net/gwoc3796/
+*/
+.icon{
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.36);
+    display: inline-block;
+    padding: 8px;
+}
+.icon:hover{
+    animation: .5s rubberBand;
+    background: rgba(105,45,1,0.6);
+}
+.icon i{
+    font-style: normal;
+}
+
+@-webkit-keyframes rubberBand {
+  0% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1)
+  }
+  3% {
+    -webkit-transform: scale3d(1.25, .75, 1);
+    transform: scale3d(1.25, .75, 1)
+  }
+  20% {
+    -webkit-transform: scale3d(.75, 1.25, 1);
+    transform: scale3d(.75, 1.25, 1)
+  }
+  40% {
+    -webkit-transform: scale3d(1.15, .85, 1);
+    transform: scale3d(1.15, .85, 1)
+  }
+  55% {
+    -webkit-transform: scale3d(.95, 1.05, 1);
+    transform: scale3d(.95, 1.05, 1)
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, .95, 1);
+    transform: scale3d(1.05, .95, 1)
+  }
+  to {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1)
+  }
+}
+
+@keyframes rubberBand {
+  0% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1)
+  }
+  3% {
+    -webkit-transform: scale3d(1.25, .75, 1);
+    transform: scale3d(1.25, .75, 1)
+  }
+  20% {
+    -webkit-transform: scale3d(.75, 1.25, 1);
+    transform: scale3d(.75, 1.25, 1)
+  }
+  40% {
+    -webkit-transform: scale3d(1.15, .85, 1);
+    transform: scale3d(1.15, .85, 1)
+  }
+  55% {
+    -webkit-transform: scale3d(.95, 1.05, 1);
+    transform: scale3d(.95, 1.05, 1)
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, .95, 1);
+    transform: scale3d(1.05, .95, 1)
+  }
+  to {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1)
+  }
+}
+
+
+@keyframes titleAnimation{
+  0% {
+    transform:  rotate(0deg) scaleX(1.00) scaleY(1.00) ;
+  }
+  25% {
+    transform:  rotate(5deg) scaleX(1.10) scaleY(1.10) ;
+  }
+  50% {
+    transform:  rotate(0deg) scaleX(1.00) scaleY(1.00) ;
+  }
+  74% {
+    transform:  rotate(-5deg) scaleX(1.10) scaleY(1.10) ;
+  }
+  100% {
+    transform:  rotate(0deg) scaleX(1.00) scaleY(1.00) ;
+  }
+}
+
+
+@keyframes bounceAnimation {
+  0% { transform: translate3d(0, 0, 0);     }
+  50%   { transform: translate3d(0, -20px, 0) scaleX(1.30) scaleY(1.30); }
+  100%   { transform: translate3d(0, 0, 0); }
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta name="author" content="Alvaro Trigo Lopez" />
+    <meta name="Resource-type" content="Document" />
+
+    <!--<link href='http://fonts.googleapis.com/css?family=Quicksand|Raleway:400' rel='stylesheet' type='text/css'>-->
+
+    <!-- To display the ranking -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+
+    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css?v=7" />
+</head>
+<body>
+
+<div id="game">
+    <div class="game-info">
+        <span>
+            Level
+            <span class="game-info-level"></span>
+        </span>
+
+        <span class="game-info-score">
+            Score
+            <span class="game-info-score-value"></span>
+            <span class="game-info-score-star active">
+                <i class="icon-star-full" title="Stop game"></i>
+            </span>
+        </span>
+    </div>
+    <div class="game-content">
+        <div id="level">Level</div>
+        <div class="clouds">
+            <div class="cloud" id="cloud1"></div>
+            <div class="cloud" id="cloud2"></div>
+            <div class="cloud" id="cloud3"></div>
+        </div>
+        <div class="city" id="city1">
+            <div class="fire" id="fire1"></div>
+        </div>
+        <div class="city" id="city2">
+            <div class="fire" id="fire2"></div>
+        </div>
+        <div class="city" id="city3">
+            <div class="fire" id="fire3"></div>
+        </div>
+    </div>
+
+    <div class="startScreen game-fullscreen">
+        <div class="startScreen-centered game-centered">
+            <div class="startScreen-title"></div>
+            <button class="startScreen-playButton button">Play</button>
+            <a href="https://alvarotrigo.com/blog/creating-a-html-game-with-css-transitions-and-javascript/" class="startScreen-howWasMade" target="_blank">How was it made?</a>
+            <a href="https://twitter.com/imac2" target="_blank" class="startScreen-by">By @imac2</a>
+            <a href="https://github.com/alvarotrigo/fallingwords.js" target="_blank" title="Github repository" class="startScreen-github">
+                <i class="icon-github hover-sound"></i>
+            </a>
+        </div>
+    </div>
+
+    <span class="game-options">
+        <span class="icon game-options-stop hover-sound icon-stop-wrapper">
+            <i class="icon-stop" title="Stop game"></i>
+        </span>
+        <span class="icon game-options-volume hover-sound">
+            <i class="icon-volume-high icon-volume" title="Toggle volume"></i>
+        </span>        
+        <span class="icon game-options-about hover-sound">
+            <i class="icon-info" title="About"></i>
+        </span>
+    </span>
+
+    <div class="game-about game-fullscreen">
+        <a href="#" class="game-about-back"><< Back</a>
+        <h1>FallingWords.js</h1>
+        <h2>Created by <a href="https://twitter.com/imac2" target="_blank">Alvaro Trigo</a></h2>
+        <h3>Available <a href="https://github.com/alvarotrigo/fallingwords.js" target="_blank">at Github</a></h3>
+
+        <h2 class="game-about-instructions">Instructions</h2>
+        <p>The world is getting invaded by very evil words.</p>
+        <p>Now, you are the only one who can save the planet!</p>
+        <ul>
+            <li>Destroying words give you points based on the level you are in. <i class="icon-happy"></i></li>
+            <li>City explosions will rest you points.<i class="icon-sad"></i></li>
+            <li>Your score won't be overwritten if it was lower than the recorded one.</li>
+            <li>Notice the secret word to identify your as a user won't be encrypted.</li>
+        </ul>
+    </div>
+
+    <div class="gameOver game-fullscreen">
+        <div class="game-centered gameOver-centered">
+            <h3 class="gameOver-title">Game Over</h3>
+            <div class="gameOVer-info">
+                <p>Your score is</p>
+                <p class="gameOver-score">453,989</p>
+            </div>
+            <form class="gameOver-addToRanking" action="" method="POST">
+                <label for="name">Add your score to the ranking</label>
+                <p class="gameOver-sessionUser"></p>
+                <p>
+                    <input class="gameOver-textInput gameOver-nameInput" type="text" name="name" id="name" placeholder="Your name" required/>
+                    <div class="gameOver-notice gameOver-invalidName">
+                        This name is taken. Please choose another one. 
+                    </div>
+                    <input class="gameOver-textInput gameOver-passwordInput" type="password" name="secretWord" id="secretWord" placeholder="Choose a password" required/>
+                    <div class="gameOver-notice gameOver-password-info">
+                        Password is required so others won't overwrite your score. 
+                    </div>
+
+                    <button class="gameOver-addToRanking-button button" type="submit">
+                        <div class="gameOver-addToRanking-loading"></div>
+                        <span class="gameOver-addToRanking-addScore">Add Score</span>
+                        <span class="gameOver-addToRanking-addingScore">Adding Score...</span>
+                    </button>
+                    <div class="gameOver-viewRanking">Skip and view ranking</div>
+                </p>
+            </form>
+
+        </div>
+    </div>
+    <div class="ranking game-fullscreen">
+        <div class="ranking-centered">
+            <h3 class="ranking-title">Ranking</h3>
+            <div class="ranking-info">
+                <p>You are in position <span id="ranking-position"></span> of <span id="ranking-numUsers"></span> players</p>
+            </div>
+
+            <table id="ranking-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Score</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <button class="ranking-playButton button">Play again</button>
+        </div>
+    </div>
+</div>
+<div class="footer">From the creator of <a href="https://alvarotrigo.com/fullPage/" target="_blank">fullPage.js</a>, <a href="https://alvarotrigo.com/pagePiling/" target="_blank">pagePiling.js</a> and <a href="https://alvarotrigo.com/multiScroll/" target="_blank">multiScroll.js</a></div>
+
+<script src="actions.js?v=8" type="text/javascript"></script>
+
+<!-- To display the ranking -->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+</body>
+</html>
