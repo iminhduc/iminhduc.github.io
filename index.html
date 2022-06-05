@@ -1,150 +1,282 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
-    <meta name="author" content="Alvaro Trigo Lopez" />
-    <meta name="Resource-type" content="Document" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Hồ Ngọc Minh Đức | Backend Engineer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 
-    <!--<link href='http://fonts.googleapis.com/css?family=Quicksand|Raleway:400' rel='stylesheet' type='text/css'>-->
-
-    <!-- To display the ranking -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
-
-    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css?v=7" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
+
 <body>
-
-<div id="game">
-    <div class="game-info">
-        <span>
-            Level
-            <span class="game-info-level"></span>
-        </span>
-
-        <span class="game-info-score">
-            Score
-            <span class="game-info-score-value"></span>
-            <span class="game-info-score-star active">
-                <i class="icon-star-full" title="Stop game"></i>
-            </span>
-        </span>
-    </div>
-    <div class="game-content">
-        <div id="level">Level</div>
-        <div class="clouds">
-            <div class="cloud" id="cloud1"></div>
-            <div class="cloud" id="cloud2"></div>
-            <div class="cloud" id="cloud3"></div>
-        </div>
-        <div class="city" id="city1">
-            <div class="fire" id="fire1"></div>
-        </div>
-        <div class="city" id="city2">
-            <div class="fire" id="fire2"></div>
-        </div>
-        <div class="city" id="city3">
-            <div class="fire" id="fire3"></div>
-        </div>
-    </div>
-
-    <div class="startScreen game-fullscreen">
-        <div class="startScreen-centered game-centered">
-            <div class="startScreen-title"></div>
-            <button class="startScreen-playButton button">Play</button>
-            <a href="" target="_blank" class="startScreen-by">By Minh Duc</a>
-            
-            </a>
-        </div>
-    </div>
-
-    <span class="game-options">
-        <span class="icon game-options-stop hover-sound icon-stop-wrapper">
-            <i class="icon-stop" title="Stop game"></i>
-        </span>
-        <span class="icon game-options-volume hover-sound">
-            <i class="icon-volume-high icon-volume" title="Toggle volume"></i>
-        </span>        
-        <span class="icon game-options-about hover-sound">
-            <i class="icon-info" title="About"></i>
-        </span>
-    </span>
-
-    <div class="game-about game-fullscreen">
-        <a href="#" class="game-about-back"><< Back</a>
-
-        <h2 class="game-about-instructions">Instructions</h2>
-        <p>The world is getting invaded by very evil words.</p>
-        <p>Now, you are the only one who can save the planet!</p>
-        <ul>
-            <li>Destroying words give you points based on the level you are in. <i class="icon-happy"></i></li>
-            <li>City explosions will rest you points.<i class="icon-sad"></i></li>
-            <li>Your score won't be overwritten if it was lower than the recorded one.</li>
-            <li>Notice the secret word to identify your as a user won't be encrypted.</li>
-        </ul>
-    </div>
-
-    <div class="gameOver game-fullscreen">
-        <div class="game-centered gameOver-centered">
-            <h3 class="gameOver-title">Game Over</h3>
-            <div class="gameOVer-info">
-                <p>Your score is</p>
-                <p class="gameOver-score">453,989</p>
-            </div>
-            <form class="gameOver-addToRanking" action="" method="POST">
-                <label for="name">Add your score to the ranking</label>
-                <p class="gameOver-sessionUser"></p>
-                <p>
-                    <input class="gameOver-textInput gameOver-nameInput" type="text" name="name" id="name" placeholder="Your name" required/>
-                    <div class="gameOver-notice gameOver-invalidName">
-                        This name is taken. Please choose another one. 
-                    </div>
-                    <input class="gameOver-textInput gameOver-passwordInput" type="password" name="secretWord" id="secretWord" placeholder="Choose a password" required/>
-                    <div class="gameOver-notice gameOver-password-info">
-                        Password is required so others won't overwrite your score. 
+    <div class="main">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="left-side">
+                    <div class="section">
+                        <div class="avatar">
+                            <img src="assets/images/profile.jpg" alt="">
+                        </div>
                     </div>
 
-                    <button class="gameOver-addToRanking-button button" type="submit">
-                        <div class="gameOver-addToRanking-loading"></div>
-                        <span class="gameOver-addToRanking-addScore">Add Score</span>
-                        <span class="gameOver-addToRanking-addingScore">Adding Score...</span>
-                    </button>
-                    <div class="gameOver-viewRanking">Skip and view ranking</div>
-                </p>
-            </form>
+                    <div class="section">
+                        <h4 class="title">Contact</h4>
+                        <div class="contact-box">
+                            <div class="icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="detail">
+                                +0929 686 924 <br>
+                            </div>
+                        </div>
+                        <div class="contact-box">
+                            <div class="icon">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <div class="detail">
+                                hongocminhduc29@gmail.com<br>
+                            </div>
+                        </div>
+                        <div class="contact-box">
+                            <div class="icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="detail">
+                                Bình Thạnh, Hồ Chí Minh City, Viet Nam
+                            </div>
+                        </div>
+                        <ul class="social-link">
+                            <li><a href="https://facebook.com/hnmduc"><i class="fab fa-facebook-f"></a></i></li>
+                            <li><i class="fab fa-linkedin-in"></i></li>
+                            <li><i class="fab fa-github"></i></li>
+                        </ul>
+                    </div>
 
-        </div>
-    </div>
-    <div class="ranking game-fullscreen">
-        <div class="ranking-centered">
-            <h3 class="ranking-title">Ranking</h3>
-            <div class="ranking-info">
-                <p>You are in position <span id="ranking-position"></span> of <span id="ranking-numUsers"></span> players</p>
+                    <div class="section">
+                        <h4 class="title">Technical Skills</h4>
+                        <h6>Programing Language</h6>
+                        <div class="skill row">
+                            <div class="col-md-6">
+                                Python
+                            </div>
+                            <div class="col-md-6">
+                                Javascript
+                            </div>
+                            <div class="col-md-6">
+                                Java
+                            </div>
+                            <div class="col-md-6">
+                                PHP
+                            </div>
+                        </div>
+                        <h6>Backend Framework</h6>
+                        <div class="skill row">
+                            <div class="col-md-6">
+                                ExpressJS
+                            </div>
+                            <div class="col-md-6">
+                                NestJS
+                            </div>
+                            <div class="col-md-6">
+                                Java Spring
+                            </div>
+                            <div class="col-md-6">
+                                Django
+                            </div>
+                            <div class="col-md-6">
+                                Laravel
+                            </div>
+                        </div>
+                        <h6>Database</h6>
+                        <div class="skill row">
+                            <div class="col-md-6">
+                                SQL
+                            </div>
+                            <div class="col-md-6">
+                                MySQL
+                            </div>
+                            <div class="col-md-6">
+                                MongoDB
+                            </div>
+                            <div class="col-md-6">
+                                Redis
+                            </div>
+                            <div class="col-md-6">
+                                Solr
+                            </div>
+                        </div>
+                        <h6>Microservice</h6>
+                        <div class="skill row">
+                            <div class="col-md-6">
+                                RabbitMQ
+                            </div>
+                            <div class="col-md-6">
+                                Kafka
+                            </div>
+                            <div class="col-md-6">
+                                Docker
+                            </div>
+                            <div class="col-md-6">
+                                K8s
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="col-md-8">
+                <div class="right-side">
+                    <div class="job-title">
+                        <h1 class="">Hồ Ngọc Minh Đức</h1>
+                        <h3>Junior Backend Engineer</h3>
+                    </div>
+                    <h2 class="title"><i class="far fa-user"></i>Objective</h2>
+                    <div class="objective">
+                        <p>I would like to work in professional and challenging, active
+                            environment so that I can fully dedicate myself to your company.
+                            With my knowledge and skills that I have leaned with great
+                            performance in university, and some projects, plus my eager to
+                            work hard</p>
+                        <p>I will become a valued member of your company</p>
+                    </div>
+                    <h2 class="title"><i class="fas fa-laptop-code"></i>My Projects</h2>
+                    <div class="project-section">
+                        <h6><a target=”_blank” href="https://steveho29.github.io/mini-social-webapp/">Social Media Web
+                                Application</a><span>4/2022</span></h6>
+                        <i>Simple social media web that allows user to post articles with images, videos, add
+                            new friends, chat & watch video together in real-time</i>
+                        <ul>
+                            <li><i class="far fa-hand-point-right"></i>Using Socket.io to deliver messages,
+                                notifications to users in real-time. Design
+                                a way for storing messages on MongoDB Atlas so that it is optimized for inbox reading
+                                performance. Exploring types of indexes, creating text index to enable full-text-search.
+                                Research on sharding MongoDB’s collections within a cluster. More familiar with JWT
+                                authentication.</li>
+                        </ul>
+                    </div>
+                    <div class="project-section">
+                        <h6><a target=”_blank” href="https://github.com/steveho29/Auction-Web/">Auction
+                                Website</a><span>1/2022</span></h6>
+                        <i>Allows bidders to offer a maximum price to a product that they want to buy. The
+                            price is auto updated from the current price of the product by adding a small step price
+                            which is
+                            determined by the seller. Therefore, the bidder does not need to update their price by hand
+                            every time when current price of the product changes</i>
+                        <ul>
+                            <li>
+                                <i class="far fa-hand-point-right"></i>
+                                Using passport to set up login google and callback, set up middleware-route-
+                                controller. Running MySQL server with Xampp, storing sessions, creating
+                                full-text-search.
+                                Using Bcrypt for encrypting password, paging technique, cronjob, handling file upload,
+                                sending email with template, embedding CKEditor which enables writing content directly
+                                inside web page, ajax technique for loading data from server without refreshing the web
+                                page
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="project-section">
+                        <h6>
+                            <a target="_blank" href="">Youtube Room (Django + SQLite3 + ReactJS</a>
 
-            <table id="ranking-table">
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Score</th>
-                        <th>Name</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+                            <span>10/2022</span>
+                        </h6>
+                        <i>Users in the same room see the same video in the same timing, room’s administrator can allow
+                            others to change video</i>
+                        <ul>
+                            <li>
+                                <i class="far fa-hand-point-right"></i>
+                                Using Django REST Framework to create Model Serializer & API
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="project-section">
+                        <h6>
+                            <a target="_blank" href="">Other Projects</a>
+                            <span>2021-2022</span>
+                        </h6>
+                        <ul>
+                            <li><i class="far fa-hand-point-right"></i>Othello AI bot Desktop App (Python)</li>
+                            <li><i class="far fa-hand-point-right"></i>Handwritten Digit Recognition Desktop App
+                                (PyTorch)</li>
+                            <li><i class="far fa-hand-point-right"></i>Neural Collaborative Filtering Model for
+                                Recommendation (Tensorflow + Streamlit)</li>
+                            <li><i class="far fa-hand-point-right"></i>Chat, Send file Socket Desktop App (Python)</li>
+                            <li><i class="far fa-hand-point-right"></i>Auto Register my university courses Tool (Python
+                                requests)</li>
+                            <li><i class="far fa-hand-point-right"></i>Covid Management Desktop App (Java Swing +
+                                Socket)</li>
+                            <li><i class="far fa-hand-point-right"></i>Appointment Booking Mobile App (Flutter +
+                                Firebase)</li>
+                            <li><i class="far fa-hand-point-right"></i>Dating Mobile App (Kotlin + Firebase)</li>
+                            <li><i class="far fa-hand-point-right"></i>Cloudera Hadoop Cluster, Java and Python
+                                MapReduce Job, PySpark, MLlib</li>
+                        </ul>
+                    </div>
+                    <h2 class="title"><i class="fas fa-briefcase"></i> Work Experience</h2>
+                    <div class="project-section">
+                        <h6>Personal Freelancer <span>4/2021 - 7/2021</span></h6>
+                        <i>Course online Video Management Tool with Subtitle generator using Google Speech to Text and
+                            Google Translate
+                        </i>
+                        <ul>
+                            <li><i class="far fa-hand-point-right"></i>Python + Google Cloud + FFmpeg</li>
+                        </ul>
+                    </div>
+                    <div class="project-section">
+                        <h6>Junior Backend Engineer <span>5/2022 - Now</span></h6>
+                        <i>YouNet Media - Social Inteligence</i>
+                        <ul>
+                            <li><i class="far fa-hand-point-right"></i>NodeJS + Solr + RabbitMQ</li>
+                        </ul>
+                    </div>
 
-            <button class="ranking-playButton button">Play again</button>
+                    <h2 class="title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                    <div class="education">
+                        <ul class="row ">
+                            <li class="col-md-6"><span>2016 - 2019</span> <br>
+                                Gia Dinh Highschool</li>
+                            <li class="col-md-6"><span>2019 - Now</span> <br>
+                                Bachelor Degree - University of Science Ho Chi Minh 
+                                <i><strong>GPA 3.88 / 4</strong></i>
+                             </li>
+                        </ul>
+                    </div>
+
+                    <h2 class="title"><i class="fas fa-certificate"></i>Certification</h2>
+                    <div class="education">
+                        <ul class="row ">
+                            <li class="col-md-4">
+                                <a target="_blank" href="https://www.efset.org/cert/ysb5g3">
+                                    EF Set C2 Proficient
+                                </a>
+                            </li>
+                            <li class="col-md-4">
+                                <a target="_blank"
+                                    href="https://www.linkedin.com/learning/certificates/34bc76a84021fb8a88d2d053d8866cdd2b106df268b88d9a6cfb2ba4422f1384?trk=share_certificate">
+                                    Git Essential
+                                </a>
+
+                            </li>
+                            <li class="col-md-4">
+                                <a target="_blank"
+                                    href="https://drive.google.com/file/d/1J48fk8vmUyRaN9D6d7pSp6pdUxAbVix2/view?usp=sharing">Academic
+                                    Transcript</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
-<script src="actions.js?v=8" type="text/javascript"></script>
-
-<!-- To display the ranking -->
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 </body>
+
 </html>
