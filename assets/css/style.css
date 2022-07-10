@@ -215,6 +215,7 @@ body {
 
 .right-side .education {
   padding: 20px 0px;
+
 }
 
 .right-side .education ul li {
@@ -222,6 +223,7 @@ body {
   background-color: #f3f3f3;
   padding: 10px 15px;
   font-size: .9rem;
+  margin-right: 5px;
 }
 
 
