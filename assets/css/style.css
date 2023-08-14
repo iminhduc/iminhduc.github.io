@@ -98,6 +98,10 @@ body {
   margin: auto 0;
 }
 
+.left-side .contact-box .detail a {
+  color: white;
+}
+
 .left-side .pb0 {
   padding-bottom: 0px;
 }
