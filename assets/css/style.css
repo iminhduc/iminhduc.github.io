@@ -98,6 +98,10 @@ body {
   margin: auto 0;
 }
 
+.left-side .contact-box .detail a {
+  color: white;
+}
+
 .left-side .pb0 {
   padding-bottom: 0px;
 }
@@ -207,6 +211,7 @@ body {
 
 .right-side .project-section ul li {
   padding-left: 5px;
+  padding-bottom: 5px;
 }
 
 .right-side .project-section ul li i {
