@@ -31,16 +31,27 @@ body {
 
 
 .main {
-  background-color: white;
+  display: grid;
+  grid-template-rows: auto auto;
+  /* background-color: white; */
   width: 100%;
   margin: 20px auto;
   padding-left: 0px;
   padding-right: 0px;
   max-width: 1000px;
+  row-gap: 20px;
 }
 
+.main > div {
+  background-color: white;
+  padding: 20px;
+}
 
-.left-side {
+.second-page {
+  min-height: 100vh;
+}
+
+/* .left-side {
   background-color: #1d3251;
   color: #FFF;
   height: 100%;
@@ -157,7 +168,7 @@ body {
 
 .left-side .skill {
   margin: 10px 0;  
-}
+} */
 
 .right-side {
   padding: 30px 30px;
@@ -165,7 +176,7 @@ body {
 }
 
 .right-side .job-title {
-  text-align: right;
+  text-align: center;
 }
 
 .right-side .job-title h1 {
@@ -176,7 +187,7 @@ body {
 
 
 .right-side .title {
-  border-bottom: 2px solid #CCC;
+  border-bottom: 3px solid #CCC;
   font-size: 1.5rem;
   font-weight: bold;
   padding: 10px;
