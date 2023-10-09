@@ -70,6 +70,10 @@ body {
   color: #c7c2c2;
 }
 
+.container .job-title p {
+  margin: 0px;
+}
+
 .container .content-section {
   display: grid;
   grid-template-columns: 7cm auto;
@@ -135,19 +139,18 @@ body {
 }
 
 .item-box {
-  display: grid;
-  grid-template-rows: auto auto;
+  display: flex;
   padding: 10px 0; 
   font-size: .9rem;
   margin-right: 5px;
-  row-gap: 10px;
 }
 
 .item-box span {
   background-color: #f3f3f3;
   border-radius: 5px;
   padding: 20px;
-  width: max-content;
+  width: 22rem;
+  margin: 0px 10px;
 }
 
 .project-description {
