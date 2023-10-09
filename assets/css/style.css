@@ -1,7 +1,7 @@
 a {
   text-decoration: none;
   outline: none;
-  color: #222;
+  color: #5B5B5B;
 }
 
 ul {
@@ -12,7 +12,6 @@ ul {
 li {
   list-style-type: none;
 }
-
 
 h4,
 h5,
@@ -128,10 +127,6 @@ body {
   padding-left: 5px;
   padding-bottom: 5px;
   list-style-type: disc;
-}
-
-.container .list-section ul li a {
-  color: #5B5B5B;
 }
 
 .container .list-section ul li i {
