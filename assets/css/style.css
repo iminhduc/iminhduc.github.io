@@ -157,3 +157,7 @@ body {
   font-weight: bold;
   margin-right: 5px;
 }
+
+.product-list-indent{
+  padding-left: 1em
+}
